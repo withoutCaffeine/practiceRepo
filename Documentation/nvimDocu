@@ -1,0 +1,79 @@
+General Information:
+
+--- Current Lesson 4.3 Line #509
+
+FullScreen
+- CTRL+F
+
+# Movement Commands
+
+<Left> 	H
+<Down>	J
+<Up>	K
+<Right> L
+
+G	Move to bottom of the file.
+gg	Move to start of the file.
+xG	Move to Line # 'x'
+
+<C-g>	Show cursor location in a file and the file status.
+
+# Search Command
+
+/+phraseSearch for phrase
+?	Search in the backward direction
+n	Search for the same phrase again
+N	Search for teh same phrase in the opposite direction
+<C-o>	Go back to where you came from (<CTRL> pressed down while pressing the letter o), Repeat to go further.
+<C-i>	Goes forward
+:noh Clear the search highlight
+
+<Normal Mode> ESC
+
+# General Commands
+
+- Undo
+u	Undo last action
+U	Undu returns line to original state
+CTRL+R	Redo commands
+
+:q!	Quit & Discard Changes
+:wq	Quit & Save Changes
+:Tutor	Open a fresh copy of Tutor Document
+x	Delete character under cursor
+i	Input before the cursor
+a	Append text after cursor
+A	Append after the line.
+rx	Replace the character at the cursor with 'x'
+v	start to highlight text
+
+Format for change command:
+
+	operator  [number]  motion
+
+x<motn>	Typing a number before a motion repeats it that many times Ex: 2w, 3e (Moves 2 words)
+x<optr>	Typing a number with an operator repeats it that many times Ex: d2w (Deletes two words)
+dd	Delete the line
+2dd	Delete two lines
+0	Go to the beginning of the line
+$	Go to the end of the line
+
+# Delete Commands
+
+dw	Delete until the start of the next word, EXCLUDING its first character. 
+d$ 	Delete to the end of the line, INCLUDING the last character.
+de	Delete to the end of the current word, INCLUDING the last character.	
+p	PUT previously deleted text after the cursor. 
+P	PUT previously deleted text before the cursor. 
+y	Copy the selected text, use p to paste it where you want.
+
+# Information 
+
+- Commands are made up of an operator and motion 
+
+# Change Operator
+
+- Works the same way as delete. The formate is: 
+	c  [number]  motion
+
+

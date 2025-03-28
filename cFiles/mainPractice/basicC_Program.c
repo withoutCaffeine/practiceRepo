@@ -9,6 +9,8 @@
 // including standard boolean library
 #include <stdbool.h>
 
+// including unix standard library
+#include <unistd.h>
 
 // 	Main Function Begins here
 // ---------------------------------------------------------------------------------------------------------------------------------------
@@ -480,8 +482,22 @@ int main() {
   }
   while (doI < 5);
 
+// ----------------------------------------
+
+  // Real Life Examples
+  
+  int whileCountDown = 3;
+
+  while (whileCountDown > 0) {
+    printf("%d\n", whileCountDown);
+    whileCountDown--;
+    sleep(1);
+  }
+
+  printf("Happy New Year!!\n");
   return 0;
 }
+
 
 // REMEMBER, you need to run gcc <filename> -o <executable name> to compile this program. 
 // If you forget to put -o, the default output program will be called 'a.out'

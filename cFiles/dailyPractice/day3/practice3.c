@@ -5,6 +5,7 @@
 // including standard i/o, standard boolean, unix standard library
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
 #include <unistd.h>
 
@@ -140,35 +141,42 @@ int main() {
   }
   
   // While loops
-
+/*
   int intM = 0;
   while (intM < 5) {
     printf("%d\n", intM);
-    sleep(1);
-    //usleep() microseconds
+    //sleep(1); // seconds
+    usleep(250000); // microseconds
     //nanosleep() nanoseconds
     intM++;
   }
-
+*/
   // do while
-  int intN = 0;
-  do {
+//  int intN = 0;
+/*
+    do {
     printf("%d\n", intN);
     usleep(500000);
     intN++;
-  }
-  while (intN < 5);
-
+    }
+    while (intN < 5);
+*/
   // while
   int intO = 5;
-  while (intO > 5) {
-    print("%d\n", intO);
-    int0--;
+  while (intO > 0) {
+    printf("%d\n", intO);
+    system("afplay /System/Library/Sounds/Ping.aiff");
+    // usleep(500000);
+    intO--;
   }
+  printf("Count down over!\n");
 
-  printf("Count down over!");
+  // for loop
+  int i;
 
-
+  for (i=0;i<5;i++) {
+    printf("%d\n",i);
+  }
 
   return 0;
 }

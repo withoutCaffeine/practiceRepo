@@ -2,6 +2,14 @@ General Information:
 
 --- Current Lesson 4.3 Line #509
 
+Different Modes:
+ESC - Normal Mode
+i   - Input Mode
+v   - Visual Mode
+R   - Replace Mode
+:help - opens help window
+<C-w><C-w> jumps between windows
+
 FullScreen
 - CTRL+F
 
@@ -11,6 +19,13 @@ FullScreen
 <Down>	J
 <Up>	K
 <Right> L
+
+# External Commands
+:!<External Command> will execute any external command (Including arguments) after hitting enter
+:x <C-d> will show auto completes of the command (Then you can use <Tab> to move between options)
+
+w move to the next start of word
+e move to the next end of word
 
 G	Move to bottom of the file.
 gg	Move to start of the file.
@@ -28,6 +43,12 @@ N	Search for teh same phrase in the opposite direction
 <C-i>	Goes forward
 :noh Clear the search highlight
 
+% matching bracket search
+:s/old/new  Change the first match old to new 
+:s/old/new/g  Change all matches of old to new in line
+:#,#s/old/new/g Change all matches between lines #, # of old to new (inclusive)
+:%s/old/new/g replace all matches in file
+:%s/old/new/gc replace all with a prompt to replace
 <Normal Mode> ESC
 
 # General Commands
@@ -45,7 +66,16 @@ i	Input before the cursor
 a	Append text after cursor
 A	Append after the line.
 rx	Replace the character at the cursor with 'x'
+o Add new line below cursor and enter input mode
+O Add new line above cursor and enter input mode
+
+# Visual Mode
 v	start to highlight text
+
+# Working & Modifying Files
+:w <FILENAME> will write text to a file
+:r <FILENAME> Retrieve and put text at cursor
+:r !COMMAND   Output the results of the command
 
 Format for change command:
 
@@ -75,5 +105,8 @@ y	Copy the selected text, use p to paste it where you want.
 
 - Works the same way as delete. The formate is: 
 	c  [number]  motion
+
+You can use y as an operator, Ex: yw yanks the word. 
+
 
 

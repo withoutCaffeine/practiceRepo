@@ -61,9 +61,113 @@ int main() {
 
   printf("%d\n", intI); // Outputs 2
 
-  // Implicit
-  float floatJ=9; // int to float
-  int   intJ=9.99;// float to int
+  // Implicit | NOTE: These will cause an error in gcc compiler, so we'll comment them out. 
+//  float floatJ=9; // int to float 
+//  int   intJ=9.99;// float to int
+
+  // Explicit: Manual conversion
+  float floatK= (float) 5 / 2;
+
+  printf("%f\n", floatK);
+
+  // Constants : can't be changed
+  const int intK = 15;
+  const int mphstatic = 60;
+
+  // Booleans
+
+  bool isProgrammingFun = true;
+  bool isFishTasty = false;
+
+  // bools return an int, use %d
+
+  printf("%d\n", isProgrammingFun);
+  printf("%d\n", 10>9);
+
+  bool isHamburgerTasty = true;
+  bool isPizzaTasty = true;
+  printf("%d\n", isHamburgerTasty = isPizzaTasty);
+
+  // Condition & If Statements
+
+  if (20 > 18) {
+    printf("20 is greater than 18\n");
+  } else if (20 < 18) {
+    printf("20 is not greater than 18\n");
+  } else {
+    printf("Who knows man?!");
+  }
+  // Short-hand 
+  int intL = 20;
+  (intL<18)?printf("Good day!\n"):printf("Good evening.\n");
+
+  // Switch
+
+  int switchDay=4;
+
+  switch (switchDay) {
+    case 1:
+      printf("Monday");
+      printf("\n");
+      break;
+    case 2:
+      printf("Tuesday");
+      printf("\n");
+      break;
+    case 3:
+      printf("Wednesday");
+      printf("\n");
+      break;
+    case 4:
+      printf("Thursday");
+      printf("\n");
+      break;
+    case 5:
+      printf("Friday");
+      printf("\n");
+      break;
+    case 6:
+      printf("Saturday");
+      printf("\n");
+      break;
+    case 7:
+      printf("Sunday");
+      printf("\n");
+      break;
+    default: // will return if there is no case match
+      printf("That's not a day of the week!");
+      printf("\n");
+  }
+  
+  // While loops
+
+  int intM = 0;
+  while (intM < 5) {
+    printf("%d\n", intM);
+    sleep(1);
+    //usleep() microseconds
+    //nanosleep() nanoseconds
+    intM++;
+  }
+
+  // do while
+  int intN = 0;
+  do {
+    printf("%d\n", intN);
+    usleep(500000);
+    intN++;
+  }
+  while (intN < 5);
+
+  // while
+  int intO = 5;
+  while (intO > 5) {
+    print("%d\n", intO);
+    int0--;
+  }
+
+  printf("Count down over!");
+
 
 
   return 0;

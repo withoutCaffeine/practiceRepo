@@ -224,7 +224,7 @@ int main() {
 	// Implicit: Automatic conversion | Can be risky, you might lose control over specific values in certain situations.
 	
 	float convFloat=9;  // Auto conv: int to float
-	int   convInt=9.99; // Auto conv: float to int
+	// int   convInt=9.99; // Auto conv: float to int, this line was commented out because it shows an error on MacOS
 	printf("%f\n", convFloat); // 9.000000
 	
 	// Explicit: Manual conversion 
@@ -495,6 +495,38 @@ int main() {
   }
 
   printf("Happy New Year!!\n");
+
+
+// ----------------------------------------
+
+  // For Loops
+
+  // Syntax
+  int forInt;
+
+  for (forInt = 0; forInt < 5; forInt++) {
+    printf("%d\n", forInt);
+  }
+
+  int nestI, nestJ;
+
+  for (nestI=1;nestI<=2;++nestI) {
+    printf("Outer: %d\n", nestI);
+
+    for (nestJ=1;nestJ<=3;++nestJ) {
+      printf(" Inner: %d\n", nestJ);
+    }
+  }
+
+  // Real-Life Examples
+  
+  int realI;
+
+  for (realI=0;realI<=100;realI+=10) {
+    printf("%d\n", realI);
+  }
+
+    
   return 0;
 }
 

@@ -41,38 +41,41 @@ int main() {
   } else {
      printf("8. isProgramming Fun = True, or %d\n9. isEatingHealthyFun = True, or %d\n", isProgrammingFun, isEatingHealthyFun);
   }
- 
-  printf("I've also declared an array, with the following numbers:\n");
-  for (z=0;z<4;z++) {
+
+  int numLength = sizeof(myNumbers) / sizeof(myNumbers[0]);
+  printf("I've also declared an array, with the following numbers:\n\n");
+  for (z=0;z<numLength;z++) {
     printf("%d\n", myNumbers[z]);
   }
 
+  printf("The size of the array is %lu bytes\n\n", sizeof(myNumbers)); // 20
+
  
-  printf("Let's find the area of our square:\nLength: %d (Constant)\nWidth: %d (Constant)\nArea (length*width): %d\n", l, w, l*w);
+  printf("Let's find the area of our square:\nLength: %d (Constant)\nWidth: %d (Constant)\nArea (length*width): %d\n\n", l, w, l*w);
   
   int day=4;
 
   switch (day) {
     case 1:
-      printf("Monday\n");
+      printf("Today is Monday\n\n");
       break;
     case 2:
-      printf("Tuesday\n");
+      printf("Today is Tuesday\n\n");
       break;
     case 3:
-      printf("Wednesday\n");
+      printf("Today is Wednesday\n\n");
       break;
     case 4:
-      printf("Thursday\n");
+      printf("Today is Thursday\n\n");
       break; 
     case 5:
-      printf("Friday\n");
+      printf("Today is Friday\n\n");
       break;
     case 6:
-      printf("Saturday\n");
+      printf("Today is Saturday\n\n");
       break;
     case 7:
-      printf("Sunday\n");
+      printf("Today is Sunday\n\n");
       break;
     default: // return if no match
       printf("That is not a day of the week!\n");
@@ -83,7 +86,7 @@ int main() {
     printf("%d\n", i);
     i++;
   } 
-  printf("While loop complete!\n");
+  printf("While loop complete!\n\n");
 
   i = 0;
   do {
@@ -91,12 +94,12 @@ int main() {
     i++;
   }
   while (i<5); 
-  printf("Do While loop complete!\n");
+  printf("Do While loop complete!\n\n");
 
   i=0;
   int i2=0;
 
-  printf("Let's show a nested for loop that will use 'break' to stop.\n\n");
+  printf("Let's show a nested for loop that will use 'break' to stop:\n\n");
 
   for (i=0;i<5;++i) {
     printf("%d\n",i);
@@ -112,7 +115,7 @@ int main() {
  
   }
 
-  printf("Let's show a nested for loop that will skip sometimes due to 'continue'\n\n");
+  printf("Let's show a nested for loop that will skip sometimes due to 'continue':\n\n");
 
   for (i=0;i<3;++i) {
     printf("%d\n",i);

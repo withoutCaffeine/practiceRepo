@@ -1,0 +1,14 @@
+Setup Linux Mint Vbox
+
+1. username: mintDev
+2. pass: 0726
+3. open terminal
+4. sudo apt install neovim
+5. sudo apt install git
+6. git config --global user.email "46300619+withoutCaffeine@users.noreply.github.com46300619+withoutCaffeine@users.noreply.github.com"
+7. git config --global user.name "woCaffeine"
+8. git commit --amend --reset-author --no-edit
+9. open firefox
+10. install bitwarden
+11. git push, and login using email and token
+12. maybe use setup.sh?

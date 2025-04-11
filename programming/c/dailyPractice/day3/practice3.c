@@ -145,9 +145,9 @@ int main() {
   int intM = 0;
   while (intM < 5) {
     printf("%d\n", intM);
-    //sleep(1); // seconds
-    usleep(250000); // microseconds
-    //nanosleep() nanoseconds
+//  sleep(1); // seconds Commented out for quickness
+//  usleep(250000); // microseconds Commented out for quickness
+//  nanosleep() // nanoseconds Commented out for quickness
     intM++;
   }
  
@@ -155,7 +155,7 @@ int main() {
 int intN = 0;
     do {
     printf("%d\n", intN);
-    usleep(500000);
+//  usleep(500000); //  Commented out for quickness
     intN++;
     }
     while (intN < 5);
@@ -164,8 +164,8 @@ int intN = 0;
   int intO = 5;
   while (intO > 0) {
     printf("%d\n", intO);
-    system("afplay /System/Library/Sounds/Ping.aiff");
-    // usleep(500000);
+//  system("afplay /System/Library/Sounds/Ping.aiff"); // Only usable on MacOS
+//  usleep(500000); // Commented out for quickness
     intO--;
   }
   printf("Count down over!\n");

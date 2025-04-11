@@ -141,7 +141,7 @@ int main() {
   }
   
   // While loops
-/*
+ 
   int intM = 0;
   while (intM < 5) {
     printf("%d\n", intM);
@@ -150,17 +150,16 @@ int main() {
     //nanosleep() nanoseconds
     intM++;
   }
-*/
+ 
   // do while
-//  int intN = 0;
-/*
+int intN = 0;
     do {
     printf("%d\n", intN);
     usleep(500000);
     intN++;
     }
     while (intN < 5);
-*/
+
   // while
   int intO = 5;
   while (intO > 0) {

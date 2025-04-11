@@ -2,18 +2,20 @@
  * Created by CMU | 4/11/25
  */
 
-// Including standard i/o, standard library, standard boolean, unix standard library
+// Including standard i/o, standard library, standard boolean, unix standard library, string library
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <unistd.h>
+#include <string.h>
 
 
 // Main
 int main() {
 
   int i;
+  int j;
   long unsigned int z;
   int intA;
   intA = 0;
@@ -21,38 +23,59 @@ int main() {
   double doubleA = 3.1458923523;
   char charA, charB;
   charA = charB = 'A';
-  char Text [] = "Hello";
   const int l = 4; // can't be changed.
   const int w = 6; // can't be changed.
   bool isProgrammingFun = true;
   bool isEatingHealthyFun = false;
+  char textSt [] = "Hello World!";
+  char textCopy [] = {'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd', '!', '\0'}; // Make note of the \0 at the end.
+  char txt [] = "We are the so-called \"Vikings\" from the north. Here are a couple of other needed symbols \' and \\"; // Some others, \n - New line, \n - Tab, \0 - Null
   int myNumbers[] = {25, 50, 75, 100}; // Must all be same type
+  int matrix[2][3] = { {1, 4, 2}, {3, 6, 8} }; // 1st dimension (2) # of rows, 2nd dimension (3) # of columns                                      
   
-
   // Format Specifiers
-  printf("I'm declaring the following variables:\n1. intA = %d,\n2. floatA = %f,\n3. floatB = %f (35e3 or 35*10^3),\n4. doubleA = %.7lf (Pi to 10 digits, but only 7 decimal precision),\n5. charA = %c,\n6. charB = %c,\n7. Text = %s,\n", intA, floatA, floatB, doubleA, charA, charB, Text);
+  printf("I'm declaring the following variables:\n\n1. intA = %d,\n2. floatA = %f,\n3. floatB = %f (35e3 or 35*10^3),\n4. doubleA = %.7lf (Pi to 10 digits, but only 7 decimal precision),\n5. charA = %c,\n6. charB = %c,\n7. textSt = %s,\n", intA, floatA, floatB, doubleA, charA, charB, textSt);
   
   if (isProgrammingFun == true && isEatingHealthyFun == false) {
-    printf("8. isProgramming Fun = True, or %d\n9. isEatingHealthyFun = False, or %d\n", isProgrammingFun, isEatingHealthyFun);
+    printf("8. isProgramming Fun = True, or %d\n9. isEatingHealthyFun = False, or %d\n\n", isProgrammingFun, isEatingHealthyFun);
   } else if (isProgrammingFun == false && isEatingHealthyFun == true) {
-    printf("8. isProgramming Fun = False, or %d\n9. isEatingHealthyFun = True, or %d\n", isProgrammingFun, isEatingHealthyFun);
+    printf("8. isProgramming Fun = False, or %d\n9. isEatingHealthyFun = True, or %d\n\n", isProgrammingFun, isEatingHealthyFun);
   } else if (isProgrammingFun && isEatingHealthyFun == false) {
-    printf("8. isProgramming Fun = False, or %d\n9. isEatingHealthyFun = False, or %d\n", isProgrammingFun, isEatingHealthyFun);
+    printf("8. isProgramming Fun = False, or %d\n9. isEatingHealthyFun = False, or %d\n\n", isProgrammingFun, isEatingHealthyFun);
   } else {
-     printf("8. isProgramming Fun = True, or %d\n9. isEatingHealthyFun = True, or %d\n", isProgrammingFun, isEatingHealthyFun);
+     printf("8. isProgramming Fun = True, or %d\n9. isEatingHealthyFun = True, or %d\n\n", isProgrammingFun, isEatingHealthyFun);
   }
 
   int numLength = sizeof(myNumbers) / sizeof(myNumbers[0]);
-  printf("I've also declared an array, with the following numbers:\n\n");
+  printf("I've also declared an array with a memory size of %lu bytes; It contains the following numbers:\n\n", sizeof(myNumbers));
   for (z=0;z<numLength;z++) {
     printf("%d\n", myNumbers[z]);
   }
+  printf("\n");
 
-  printf("The size of the array is %lu bytes\n\n", sizeof(myNumbers)); // 20
+  printf("I've also got a matrix, or multi-dimensional array. (Like a spreadsheet)\n\n");
+  printf("Let's show you the element in the first row, and third column: %d\n\n", matrix[0][2]);
 
- 
+  printf("Let's loop through it now:\n");
+  for (i = 0; i < 2; i++) {
+    for (j = 0; j < 3; j++) {
+      printf("%d\n", matrix[i][j]);
+    }
+  }
+  printf("\n"); // extra break
+
+  matrix[0][2] = 5;
+  printf("Now, we'll change that value. Here is the new value: %d\n\n", matrix[0][2]);
+
+
   printf("Let's find the area of our square:\nLength: %d (Constant)\nWidth: %d (Constant)\nArea (length*width): %d\n\n", l, w, l*w);
-  
+ 
+  printf("Let's work with Strings now.\n");
+  printf("Let's grab the 3rd character in the string (Strings are arrays of characters): %c\n", textSt[2]);  
+  // You can also edit strings just like arrays.
+
+
+
   int day=4;
 
   switch (day) {

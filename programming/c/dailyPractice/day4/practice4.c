@@ -38,7 +38,7 @@ int main() {
      printf("8. isProgramming Fun = True, or %d\n9. isEatingHealthyFun = True, or %d\n", isProgrammingFun, isEatingHealthyFun);
   }
   
-  printf("Let's multiply to find the area. We have a length of: %d (Constant), and a width of: %d (Constant).\nThe area of this square is: %d.",l,w,l*w);
+  printf("Let's find the area of our square:\nLength: %d (Constant)\nWidth: %d (Constant)\nArea (length*width): %d\n", l, w, l*w);
   
   int day=4;
 
@@ -68,7 +68,26 @@ int main() {
       printf("That is not a day of the week!\n");
     }
 
+  int i = 0;
+  while (i<5) {
+    printf("%d\n", i);
+    i++;
+  } 
+  printf("While loop complete!\n");
 
+  i = 0;
+  do {
+    printf("%d\n", i);
+    i++;
+  }
+  while (i<5); 
+  printf("Do While loop complete!\n");
 
-      return 0;
+  i=0;
+  for (i=0;i<5;i++) {
+    printf("%d\n",i);
+  } 
+  printf("For loop complete!\n");
+  
+  return 0;
 }

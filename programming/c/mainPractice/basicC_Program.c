@@ -526,7 +526,16 @@ int main() {
     printf("%d\n", realI);
   }
 
-    
+  // Break & Continue
+
+  int breakI;
+
+  for (breakI=0;breakI<10;breakI++) {
+    if (breakI==4) {
+      break;
+    }
+    printf("%d\n", breakI);
+  }
   return 0;
 }
 

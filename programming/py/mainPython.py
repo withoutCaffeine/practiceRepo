@@ -48,6 +48,15 @@ MYVAR = 'john'
 myvar2 = 'john'
 #All different variables
 
+#Global Variables
+
+x = 'awesome'
+
+def myfunc():
+    print("Python is " + x)
+
+myfunc()
+
 x,y,z = 'Orange', 'Banana', 'Cherry'
 print(x)
 print(y)
@@ -60,3 +69,30 @@ fruits = ['apple',
 x,y,z = fruits
 print(fruits)
 print(x,y,z)
+
+
+txt = f"The price is 49 dollars"
+print(txt) #F-String introduced in Python 3.6. Used to have to use 'format()' method. 
+
+
+price = 59
+txt = f"The price is {price} dollars"
+print(txt)
+
+# Can also include a modifer followed by a legal formatting type, this ex sets the fixed point number with 2 decimals. 
+txt = f"The price is {price:.2f} dollars"
+print(txt)
+
+# You can also format a value directly without it being kept in a variable
+txt = f"The price is {95:.2f} dollars"
+
+# You can also perform operations in F-Strings
+txt = f"The price is {20 * 5} dollars"
+print(txt)
+
+price = 59
+tax = 0.25
+txt = f"The price is {price + (price * tax)} dollars"
+print(txt)
+
+

@@ -59,4 +59,4 @@ async def hello(ctx):
 async def debug(ctx):
     await ctx.send(dir(ctx))
 
-bot.run()
+

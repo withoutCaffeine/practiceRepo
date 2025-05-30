@@ -1,3 +1,4 @@
+import time
 import discord
 from discord.ext import commands
 import yt_dlp
@@ -57,15 +58,20 @@ async def on_voice_state_update(member, before, after):
                 guild = nerd.guild                
                 vc = discord.utils.get(bot.voice_clients, guild=guild) 
                 url = 'https://www.youtube.com/watch?v=-aLYvZ5sX28' # Insert funny URL
-
+                '''
                 with yt_dlp.YoutubeDL(YDL_OPTIONS) as ydl:
                     info = ydl.extract_info(url, download=False)
                     audio_url = info['url']
                     title = info.get('title', 'Unknown title')
-                
+                ''' 
                 # vc.stop()
-                vc.play(discord.FFmpegPCMAudio(audio_url, **FFMPEG_OPTIONS))
-                print(f"Now playing: **{title}**")
+                time.sleep(1)
+                vc.play(discord.FFmpegPCMAudio('shoebody.mp3')) # audio_url, **FFMPEG_OPTIONS)) #Used for above code if not commented out. 
+                # print(f"Now playing: **{title}**") Used if above code isn't commented out
+                print("Now playing shoebody")
+                if len(nerds) == 1:
+                    vc.stop()
+                    await channel.discconect()
 
 # Set up a variable that get flips one time; It will cause this bot to join the channel, and start playing smut when josh joins a channel that I'm also in. 
 

@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+import yt_dlp
 
 # Setup permissons needed? I think? 
 intents = discord.Intents.default()
@@ -10,8 +11,16 @@ intents.message_content = True # Needed to read message content
 # Setup command prefix
 bot = commands.Bot(command_prefix="!", intents=intents)
 
-KORIN_ID = 198308106067771392
+FFMPEG_OPTIONS = {
+        'options': '-vn'
+}
 
+YDL_OPTIONS = {
+        'format': 'bestaudio',
+        'noplaylist': 'True'
+}
+
+TARGET_USER_ID = 198308106067771392
 first_tick = False
 
 @bot.event
@@ -28,10 +37,10 @@ async def on_voice_state_update(member, before, after):
     elif before.channel != after.channel:
         print(f'{member.display_name} moved from {before.channel.name} to {after.channel.name}')
     
-    TARGET_USER_ID = 265289461883994123 # Josh's ID
+    # TARGET_USER_ID = 265289461883994123 # Josh's ID
 
     if (
-        member.id == KORIN_ID and 
+        member.id == TARGET_USER_ID and 
         before.channel is None and 
         after.channel is not None and 
         before.channel != after.channel
@@ -40,8 +49,23 @@ async def on_voice_state_update(member, before, after):
         nerds = [nerd for nerd in after.channel.members]
         print(nerds)
         for nerd in nerds:
-            if nerd.id == KORIN_ID:
-                print("He's here")
+            if nerd.id == TARGET_USER_ID:
+                print("He's here") # Debug
+                channel = nerd.voice.channel
+                await channel.connect()
+                print('bot joined channel')
+                guild = nerd.guild                
+                vc = discord.utils.get(bot.voice_clients, guild=guild) 
+                url = 'https://www.youtube.com/watch?v=-aLYvZ5sX28' # Insert funny URL
+
+                with yt_dlp.YoutubeDL(YDL_OPTIONS) as ydl:
+                    info = ydl.extract_info(url, download=False)
+                    audio_url = info['url']
+                    title = info.get('title', 'Unknown title')
+                
+                # vc.stop()
+                vc.play(discord.FFmpegPCMAudio(audio_url, **FFMPEG_OPTIONS))
+                print(f"Now playing: **{title}**")
 
 # Set up a variable that get flips one time; It will cause this bot to join the channel, and start playing smut when josh joins a channel that I'm also in. 
 

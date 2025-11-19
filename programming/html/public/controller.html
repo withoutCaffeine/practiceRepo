@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Jeopardy - Board</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<style>
+  body { font-family: Arial, sans-serif; text-align:center; background:#f7f7f7; margin:0; padding:20px; }
+  h1 { margin: 6px 0 14px; }
+  .scoreboard { display:flex; justify-content:center; gap:40px; margin-bottom:12px; }
+  .player { font-size:18px; padding:6px 10px; border-radius:6px; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,0.1); }
+  .board { display:grid; gap:6px; margin: 0 auto; width: calc(150px * 3 + 12px); }
+  .cat { background:#2c3e50; color:white; padding:12px; font-weight:700; border-radius:6px; }
+  .cell { background:#1abc9c; padding:18px; color:white; font-weight:700; cursor:pointer; border-radius:6px; }
+  .cell.answered { background:#95a5a6; cursor:default; opacity:0.8; }
+  /* modal */
+  #modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); display:flex; align-items:center; justify-content:center; }
+  #modal .box { background:#fff; color:#111; padding:20px; width:90%; max-width:520px; border-radius:8px; text-align:left; }
+  #modal .meta { color:#666; margin-bottom:8px; }
+  #modal .controls { margin-top:12px; display:flex; gap:8px; justify-content:flex-end; }
+  button { padding:8px 12px; border-radius:6px; border:0; cursor:pointer; }
+</style>
+</head>
+<body>
+  <h1>Jeopardy — Board</h1>
+  <div class="scoreboard">
+    <div class="player" id="p1">Player 1: 0</div>
+    <div class="player" id="p2">Player 2: 0</div>
+  </div>
+
+  <div id="board" class="board"></div>
+
+  <div id="modal">
+    <div class="box">
+      <div class="meta" id="meta"></div>
+      <div id="questionText" style="font-size:18px; font-weight:600;"></div>
+      <div style="margin-top:10px; color:#333;">(Answer hidden from board — use controller to score)</div>
+      <div class="controls">
+        <button onclick="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  const socket = io();
+  let state = null;
+
+  function render() {
+    const boardEl = document.getElementById('board');
+    boardEl.innerHTML = '';
+
+    if (!state) return;
+
+    const cols = state.gameData.length;
+    const maxQs = Math.max(...state.gameData.map(c=>c.questions.length));
+    boardEl.style.gridTemplateColumns = `repeat(${cols}, 150px)`;
+
+    // categories row
+    state.gameData.forEach(cat => {
+      const el = document.createElement('div');
+      el.className = 'cat';
+      el.textContent = cat.category;
+      boardEl.appendChild(el);
+    });
+
+    // questions rows
+    for (let r = 0; r < maxQs; r++) {
+      state.gameData.forEach((cat, cidx) => {
+        const q = cat.questions[r];
+        const cell = document.createElement('div');
+        cell.className = 'cell';
+        if (!q) { cell.style.visibility = 'hidden'; boardEl.appendChild(cell); return; }
+        const key = `${cidx}_${r}`;
+        if (state.answered[key]) {
+          cell.classList.add('answered');
+          cell.textContent = '—';
+        } else {
+          cell.textContent = q.points;
+        }
+        boardEl.appendChild(cell);
+      });
+    }
+
+    // scores
+    document.getElementById('p1').textContent = `Player 1: ${state.scores[1]}`;
+    document.getElementById('p2').textContent = `Player 2: ${state.scores[2]}`;
+  }
+
+  socket.on('connect', ()=> socket.emit('getState'));
+  socket.on('state', s => { state = s; render(); });
+  socket.on('questionOpened', q => {
+    // show question modal
+    document.getElementById('meta').textContent = `Player ${state.currentPlayer} — ${q.points} points`;
+    document.getElementById('questionText').textContent = q.question;
+    document.getElementById('modal').style.display = 'flex';
+  });
+  socket.on('closeQuestion', ()=> {
+    closeModal();
+  });
+
+  function closeModal(){
+    document.getElementById('modal').style.display = 'none';
+    socket.emit('getState');
+  }
+</script>
+</body>
+</html>
+

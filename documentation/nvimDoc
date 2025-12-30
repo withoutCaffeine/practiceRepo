@@ -71,6 +71,8 @@ O Add new line above cursor and enter input mode
 
 # Visual Mode
 v	start to highlight text
+y	yank text
+p	put yanked text somewhere
 
 # Working & Modifying Files
 :w <FILENAME> will write text to a file
@@ -103,7 +105,7 @@ y	Copy the selected text, use p to paste it where you want.
 
 # Change Operator
 
-- Works the same way as delete. The formate is: 
+- Works the same way as delete. The format is: 
 	c  [number]  motion
 
 You can use y as an operator, Ex: yw yanks the word. 
